@@ -21,6 +21,14 @@ console.log(num)
 ```
 The second argument need to be an object, like `{ x: 2 }`. It does not work when I just write `var x = 2`.
 
+- `math.parse()` is breaking down the expression into pieces.
+``` JS
+math.parse('2 * x^3');
+```
+- OperatorNode: *, ^
+- ConstantNode: 2
+- SymbolNode: x
+
 
 
 
