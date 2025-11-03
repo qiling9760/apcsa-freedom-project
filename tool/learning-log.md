@@ -1,8 +1,8 @@
 # Tool Learning Log
 
-## Tool: Math.js
+## Tool: Phaser
 
-## Project: Derivative calcultor
+## Project: Cat Crush
 
 ---
 
@@ -29,15 +29,30 @@ math.parse('2 * x^3');
 - ConstantNode: 2
 - SymbolNode: x
 
+### 11/2/25:
+I decided to change my project to my backup idea, which is a candy crush game. I will use the cats I have from last year's project to make my game. 
+
+`preload () {}` - define the asserts for the scene. 
+``` js
+preload() {
+    this.load.image("roachCat", "sprites/roachCat.PNG");
+}
+```
+The first `""` is how you refer to this image, and the second `""` is the source of the image. 
+
+`create(){}` - add objects to the scene. This runs only once at the beginning of the scene. 
+``` js
+create() {
+    this.roachCat = this.add.image(400, 350, "roachCat");
+}
+```
+`this.XXX` - It creates a property of the scene. `this` means the current scene. The `XXX` is the property name. We can use it to store data. It is like a variable. 
+
+`this.add.image(#, #, nameOfImage);` - This add the image to somewhere on the screen. The first number is the `x` coordinate, and the second number is the `y` coordinate. The last one is what image you want to add. 
 
 
 
 
-
-
-
-### X/X/XX:
-* Text
 
 
 <!--
