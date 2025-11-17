@@ -50,7 +50,35 @@ create() {
 
 `this.add.image(#, #, nameOfImage);` - This add the image to somewhere on the screen. The first number is the `x` coordinate, and the second number is the `y` coordinate. The last one is what image you want to add. 
 
+### 11/16/25
+I added my `roachCat` to the screen but it is too big. 
 
+`.Setscale() ` - set the scale of the sprite. A number greater than 1 increase the size, and a number less than 1 decrease the size.
+``` js
+create() {
+    this.roachCat = this.add.image(200, 200, "roachCat");
+    this.roachCat.setScale(0.1);
+}
+```
+You set the scale of the sprite in the `create()` function. I need to use `this.roachCat.setScale()` and not just `roachCat.setScale()` because `roachCat` is a property of the scene. It is not a global variable. 
+
+I need to make my sprites interactive, so I can use my mouse to control it. 
+
+`.setInteractive()` - allow a sprite to be interactive
+
+`.setInteractive({ draggable: true })` - allow me to drag the sprite
+
+I try to copy the code from the documentation but it does not work.
+``` js
+this.roachCat.on('dragstart', function(pointer, dragX, dragY){
+}, scope);
+this.roachCat.on("drag", function(pointer, dragX, dragY){
+    roachCat.setPosition(dragX, dragY);
+}, scope);
+this.roachCat.on('dragend', function(pointer, dragX, dragY, dropped){
+}, scope);
+```
+I figure out the `scope` should be `this` by searching online because it is the scene that I am refering to. 
 
 
 
