@@ -53,7 +53,7 @@ create() {
 ### 11/16/25
 I added my `roachCat` to the screen but it is too big. 
 
-`.Setscale() ` - set the scale of the sprite. A number greater than 1 increase the size, and a number less than 1 decrease the size.
+`.setScale() ` - set the scale of the sprite. A number greater than 1 increase the size, and a number less than 1 decrease the size.
 ``` js
 create() {
     this.roachCat = this.add.image(200, 200, "roachCat");
@@ -80,6 +80,15 @@ this.roachCat.on('dragend', function(pointer, dragX, dragY, dropped){
 ```
 I figure out the `scope` should be `this` by searching online because it is the scene that I am refering to. 
 
+### 11/24/25
+I figured that I only need the `drag` to drag my sprites. 
+``` js
+this.roachCat.on("drag", function(pointer, dragX, dragY){
+    this.roachCat.setPosition(dragX, dragY);
+}, this);
+```
+My previous code does not work because I forgot about the `this.`.
+- `setPosition(x,y)`: set the position of the sprite to be that coordinate. 
 
 
 
