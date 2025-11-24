@@ -106,16 +106,17 @@ for(let row = 0; row<this.row; row ++){
 for (let row = 0; row < this.row; row++) {
     for (let col = 0; col < this.col; col++) {
         let candy = this.add.image(this.x,this.y, "roachCat");
-        this.x = this.x+200;
         this.y = this.y+200;
         candy.setInteractive({ draggable: true });
-        candy.row = itsRow; // store its row
-        candy.col = itsCol; // store its column
-        this.candies[itsRow][itsCol] = candy;
+        row = itsRow; // store its row
+        col = itsCol; // store its column
+        this.candy[itsRow][itsCol] = candy;
     }
+    this.y = 100;
+    this.x = this.x+200;
 }
 ```
-This does not work. 
+This does not work. Only one candy appears.  
 
 
 
