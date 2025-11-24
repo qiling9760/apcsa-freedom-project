@@ -90,6 +90,33 @@ this.roachCat.on("drag", function(pointer, dragX, dragY){
 My previous code does not work because I forgot about the `this.`.
 - `setPosition(x,y)`: set the position of the sprite to be that coordinate. 
 
+I try to add candy to the game, so I made rows and columns. 
+``` js
+this.candy = []; // store the candies
+this.x = 100; // fist candy's x
+this.y = 100; // second candy's y
+this.row = 5; // total row
+this.col = 5; // total cal
+``` 
+``` js
+for(let row = 0; row<this.row; row ++){
+    this.candy[row] = []; // this create an array for each row of candies
+}
+
+for (let row = 0; row < this.row; row++) {
+    for (let col = 0; col < this.col; col++) {
+        let candy = this.add.image(this.x,this.y, "roachCat");
+        this.x = this.x+200;
+        this.y = this.y+200;
+        candy.setInteractive({ draggable: true });
+        candy.row = itsRow; // store its row
+        candy.col = itsCol; // store its column
+        this.candies[itsRow][itsCol] = candy;
+    }
+}
+```
+This does not work. 
+
 
 
 <!--
