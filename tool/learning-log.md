@@ -118,6 +118,38 @@ for (let row = 0; row < this.row; row++) {
 ```
 This does not work. Only one candy appears.  
 
+### 12/7/25
+I need to swap my candies, so when they overlap, there positions will swap. 
+
+`this.physics.add.existing(sprite)` add a physics body to an existing sprite. With physics body, I can check if they overlap or collide. 
+
+`this.physics.add.overlap(sprite1, sprite2, overlapCallback, processCallback, scene)` checks if two sprites touch.  
+
+`overlapCallback` is the function that runs when the two sprites overlap.   
+`processCallback` check a condition before the `overlapCallback` run. If the condition is false, the `overlapCallback` function will not run. True then run. 
+
+``` js
+this.physics.add.overlap(this.roachCat, this.catFood, this.swapCandies, null, this);
+
+swapCandies(c1, c2) {
+    // Store c1’s original position
+    let tempX = c1.originalX;
+    let tempY = c1.originalY;
+
+    // Swap their original positions
+    c1.originalX = c2.originalX;
+    c1.originalY = c2.originalY;
+    c2.originalX = tempX;
+    c2.originalY = tempY;
+
+    // move them to their new positions
+    c1.x = c1.originalX;
+    c1.y = c1.originalY;
+    c2.x = c2.originalX;
+    c2.y = c2.originalY;
+}
+```
+The sprites glitched when I try to swap them. 
 
 
 <!--
