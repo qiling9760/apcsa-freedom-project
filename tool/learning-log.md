@@ -151,6 +151,45 @@ swapCandies(c1, c2) {
 ```
 The sprites glitched when I try to swap them. 
 
+### 12/14/25
+The sprites glitched because `overlap` runs every frame, so `cat1` was swapping with `cat2` dozens of time per second. 
+
+I was also dragging the sprites while it was swapping, so even after the cat swapped, its position was set back to be my pointer's position. 
+
+I need to use a function other than overlap. A function that will only detect their collision once. The dection should also happen after I finish dragging the cat. 
+
+I need to find the boundary of my sprites, so when their boundaries touch, they swap. 
+
+`sprite.getBounds()` get the bound of the sprite. It returns a rectangle. 
+`Phaser.Geom.Intersects.RectangleToRectangle(rectA, rectB)` checks the intersection of two rectangles. Return `true` if they intersection, return `false` if not. 
+
+``` js
+var overlap = Phaser.Geom.Intersects.RectangleToRectangle(
+    this.roachCat.getBounds(),
+    this.catFood.getBounds()
+);
+
+if (overlap) { // swap if they overlap
+    this.swapCandies(this.roachCat, this.catFood);
+} else {
+    // don't swap
+    this.roachCat.setPosition(
+        this.roachCat.originalX,
+        this.roachCat.originalY
+    );
+    this.catFood.setPosition(
+        this.catFood.originalX,
+        this.catFood.originalY
+    );
+};
+```
+The cats only swap when I drag `roachCat`, but nothing happen when I drag `catFood`. 
+
+
+
+
+
+
 
 <!--
 * Links you used today (websites, videos, etc)
