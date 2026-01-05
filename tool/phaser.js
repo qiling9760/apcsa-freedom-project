@@ -20,7 +20,6 @@ class Scene1 extends Phaser.Scene {
         this.roachCat.originalX = this.roachCat.x;
         this.roachCat.originalY = this.roachCat.y;
 
-
         // create catFood
         this.catFood = this.add.image(200, 400, "catFood");
         this.catFood.setScale(0.1);
@@ -32,30 +31,53 @@ class Scene1 extends Phaser.Scene {
         this.catFood.originalX = this.catFood.x;
         this.catFood.originalY = this.catFood.y;
 
-        this.physics.add.existing(this.roachCat);
-        this.physics.add.existing(this.catFood);
+        this.roachCat.on("dragend", () => {
+            this.dragend(this.roachCat);
+        });
 
-        this.physics.add.overlap(this.roachCat, this.catFood, this.swapCandies, null, this);
-    };
+        this.catFood.on("dragend", () => {
+            this.dragend(this.catFood);
+        });
+    }
 
     swapCandies(c1, c2) {
+        // Store original positions
+        var tempX = c1.originalX;
+        var tempY = c1.originalY;
 
-        // Store c1’s original position
-        let tempX = c1.originalX;
-        let tempY = c1.originalY;
-
-        // Swap their original positions
+        // Swap original positions
         c1.originalX = c2.originalX;
         c1.originalY = c2.originalY;
+
         c2.originalX = tempX;
         c2.originalY = tempY;
 
-        // move them to their new positions
-        c1.x = c1.originalX;
-        c1.y = c1.originalY;
-        c2.x = c2.originalX;
-        c2.y = c2.originalY;
+        // Move sprites to their new original positions
+        c1.setPosition(c1.originalX, c1.originalY);
+        c2.setPosition(c2.originalX, c2.originalY);
     }
+
+
+    dragend(dragged) {
+        var other ;
+        if(dragged == this.roachCat){
+            other = this.catFood;
+        } else {
+            other = this.roachCat;
+        }
+
+        const overlap = Phaser.Geom.Intersects.RectangleToRectangle(
+            dragged.getBounds(),
+            other.getBounds()
+        );
+
+        if (overlap) {
+            this.swapCandies(dragged, other);
+        } else {
+            dragged.setPosition(dragged.originalX, dragged.originalY);
+        }
+    }
+
 }
 
 const config = {
