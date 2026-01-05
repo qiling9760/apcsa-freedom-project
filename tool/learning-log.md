@@ -185,11 +185,81 @@ if (overlap) { // swap if they overlap
 ```
 The cats only swap when I drag `roachCat`, but nothing happen when I drag `catFood`. 
 
+### 1/4/26
+The bug is I only give `roachCat` the `draggend` function and did not give it to `catFood`. 
+``` js
+dragend(dragged) {
+    var other;
+    if(dragged == this.roachCat){
+        other = this.catFood;
+    } else {
+        other = this.roachCat;
+    }
 
+    const overlap = Phaser.Geom.Intersects.RectangleToRectangle(
+        dragged.getBounds(),
+        other.getBounds()
+    );
 
+    if (overlap) {
+        this.swapCandies(dragged, other);
+    } else {
+        dragged.setPosition(dragged.originalX, dragged.originalY);
+    }
+}
+```
 
+When I drag `roachCat`, the other object will be `catFood`, and when I drag `catFood`, the other object will be `roachCat`. Then the dragging object will swap position with the other object when they overlap. 
 
+`setPosition(x,y)` - set the position of the sprite. 
 
+``` js
+this.roachCat.on("dragend", () => {
+    this.dragend(this.roachCat);
+});
+
+this.catFood.on("dragend", () => {
+    this.dragend(this.catFood);
+});
+```
+``` js
+swapCandies(c1, c2) {
+    // Store current positions
+    var tempX = c1.x;
+    var tempY = c1.y;
+
+    // Swap positions
+    c1.setPosition(c2.x, c2.y);
+    c2.setPosition(tempX, tempY);
+
+    // update originals
+    c1.originalX = c1.x;
+    c1.originalY = c1.y;
+    c2.originalX = c2.x;
+    c2.originalY = c2.y;
+}
+```
+When the objects swap positions, they were too close to each other. They did not swap their original positions, instead, they swap their current posistions, which is after I dragged the object. 
+
+``` js
+swapCandies(c1, c2) {
+    // Store original positions
+    var tempX = c1.originalX;
+    var tempY = c1.originalY;
+
+    // Swap original positions
+    c1.originalX = c2.originalX;
+    c1.originalY = c2.originalY;
+
+    c2.originalX = tempX;
+    c2.originalY = tempY;
+
+    // Move sprites to their new original positions
+    c1.setPosition(c1.originalX, c1.originalY);
+    c2.setPosition(c2.originalX, c2.originalY);
+}
+```
+In here, I store the original position instead of the current position. Then I update their original posisitons, so the next swap is based on the previous swap and not based on the beggining of the game. Lastly, the objects are swapped. 
 
 <!--
 * Links you used today (websites, videos, etc)
