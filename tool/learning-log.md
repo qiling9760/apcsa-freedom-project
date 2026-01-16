@@ -261,6 +261,33 @@ swapCandies(c1, c2) {
 ```
 In here, I store the original position instead of the current position. Then I update their original posisitons, so the next swap is based on the previous swap and not based on the beggining of the game. Lastly, the objects are swapped. 
 
+### 1/15/26
+I need to make a grid of tiles. Each tile I need their `x` and `y` positions. I will make a 10x10 grid, and use an array to hold each tile's information. I used a `for loop` to add the tiles and store their information.
+``` js
+create() {
+    var gridRows = 10;
+    var gridCols = 10;
+    var tileSize = 100;
+    this.grid = [];
+
+
+    for (var r = 0; r<gridRow; r++){
+        this.grid[r] = [] // each row will have cols, [0,1,2,3] r=0
+                                                    //[0,1,2,3] r=1;
+                                                    // c1c2c3c4
+        for (var c = 0; c<gridCol; c++){
+            var x = c * tileSize; 
+            var y = r * tileSize;
+            var tile = this.add.image(x, y, "roachCat");
+            tile.setScale(0.1);
+            tile.setInteractive({ draggable: true });
+            this.grid[r][c] = tile; // this.grid[2][4] is the tile on row 2 column 4
+        }
+    }
+}
+```
+The sprites did not show up. 
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
