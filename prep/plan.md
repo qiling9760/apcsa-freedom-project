@@ -1,7 +1,7 @@
 # Plan
 
-## Tool: 
-## Product: 
+## Tool: Phaser
+## Product: Match 3 puzzle game
 
 ---
 
@@ -9,13 +9,29 @@
 
 #### MVP
 
-- [ ] Task (deadline: X)
-  - [ ] Subtask (deadline: X)
+- [ ] Make a 10*10 grid (deadline: 2/23)
+  - [ ] Make a grid using the same sprite (deadline: 2/18)
+  - [ ] Make a grid using 4 sprites (the position of the sprite is randomly selected) (deadline: 2/23)
+
+- [ ] Move sprites and switch positions for the whole grid (deadline: 3/2)
+
+- [ ] Cancel when the sprites match 3 (deadline: 3/30) 
+  - [ ] Remove sprites when match 3 (deadline: 3/9)
+  - [ ] Sprites move down to fill the hole, new sprites randomly add in (deadline: 3/23)
+  - [ ] Cancel sprites if match 3 again when filling new sprites for the hole (deadline: 3/30) 
 
 #### Beyond MVP
 
-- [ ] Task
-  - [ ] Subtask
+- [ ] Match 4 Cancel sprites 
+  - [ ] Special effect- Clear the row/column
+- [ ] Match 5 Cancel sprites 
+  - [ ] [ ] Special effect- Clear whole grid 
+- [ ] Add a jelly layer under the sprites 
+  - [ ] When any sprites cancel, it breaks the jelly under that sprite 
+- [ ] Add a cat king under the jelly layer 
+  - [ ] Cat king randomly sized and positioned
+  - [ ] Cat king is saved when all the jelly on top of it is cleared 
+
 
 
 <!-- EXAMPLE
