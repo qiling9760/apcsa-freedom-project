@@ -9,35 +9,48 @@ class Scene1 extends Phaser.Scene {
     }
 
     create() {
-        // create roachCat
-        this.roachCat = this.add.image(200, 200, "roachCat");
-        this.roachCat.setScale(0.1);
-        this.roachCat.setInteractive({ draggable: true });
-        this.roachCat.on("drag", function(pointer, dragX, dragY){
-            this.roachCat.setPosition(dragX, dragY);
-        }, this);
+        // // create roachCat
+        // this.roachCat = this.add.image(200, 200, "roachCat");
+        // this.roachCat.setScale(0.1);
+        // this.roachCat.setInteractive({ draggable: true });
+        // this.roachCat.on("drag", function(pointer, dragX, dragY){
+        //     this.roachCat.setPosition(dragX, dragY);
+        // }, this);
 
-        this.roachCat.originalX = this.roachCat.x;
-        this.roachCat.originalY = this.roachCat.y;
+        // this.roachCat.originalX = this.roachCat.x;
+        // this.roachCat.originalY = this.roachCat.y;
 
-        // create catFood
-        this.catFood = this.add.image(200, 400, "catFood");
-        this.catFood.setScale(0.1);
-        this.catFood.setInteractive({ draggable: true });
-        this.catFood.on("drag", function(pointer, dragX, dragY){
-            this.catFood.setPosition(dragX, dragY);
-        }, this);
+        // // create catFood
+        // this.catFood = this.add.image(200, 400, "catFood");
+        // this.catFood.setScale(0.1);
+        // this.catFood.setInteractive({ draggable: true });
+        // this.catFood.on("drag", function(pointer, dragX, dragY){
+        //     this.catFood.setPosition(dragX, dragY);
+        // }, this);
 
-        this.catFood.originalX = this.catFood.x;
-        this.catFood.originalY = this.catFood.y;
+        // this.catFood.originalX = this.catFood.x;
+        // this.catFood.originalY = this.catFood.y;
 
-        this.roachCat.on("dragend", () => {
-            this.dragend(this.roachCat);
-        });
+        // this.roachCat.on("dragend", () => {
+        //     this.dragend(this.roachCat);
+        // });
 
-        this.catFood.on("dragend", () => {
-            this.dragend(this.catFood);
-        });
+        // this.catFood.on("dragend", () => {
+        //     this.dragend(this.catFood);
+        // });
+
+        // make grid
+        var candy = ["roachCat", "catFood"];
+        for (var row = 0; row < 5; row++) {
+            for (var col = 0; col < 5; col++) {
+                var num = Math.floor(Math.random() * 2);
+                var cat = candy[num];
+                this.add.image(col*150, row*150, cat).setScale(0.1).setOrigin(0,0);
+
+            }
+        }
+
+
     }
 
     swapCandies(c1, c2) {
