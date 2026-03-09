@@ -288,6 +288,42 @@ create() {
 ```
 The sprites did not show up. 
 
+### 3/8/26
+I tried to make a grid of sprites using a `for`loop with only one sprite. 
+``` js
+for (var row = 0; row < 5; row++) {
+    for (var col = 0; col < 5; col++) {
+
+        this.add.image(col, row, "roachCat");
+
+    }
+}
+```
+This code did not work because I only see half of a sprite filling up the whole screen. So I change it's scale to 0.1. But this also did not work because I only see a half of a sprite on the top left corner of the screen. Then I realize the x and y are only increasing by 1, so all the sprites must be hidden under the first sprite. 
+``` js
+for (var row = 0; row < 5; row++) {
+    for (var col = 0; col < 5; col++) {
+
+        this.add.image(col*150, row*150, "roachCat").setScale(0.1).setOrigin(0,0);
+
+    }
+}
+```
+This time, the sprites in the first column only have half of their bodies in the screen, so I search online "sprite on top left corner only shows half phaser" and I found [this](https://www.html5gamedevs.com/topic/36033-setorigin-for-placement-or-for-pivotoffset-point/). So I used `setOrigin(0,0)`.
+
+I will make an array of sprites, and when adding sprites to the grid, it will pick a random sprite from the array. 
+``` js
+var candy = ["roachCat", "catFood"];
+    for (var row = 0; row < 5; row++) {
+        for (var col = 0; col < 5; col++) {
+            var num = Math.floor(Math.random() * 2);
+            var cat = candy[num];
+            this.add.image(col*150, row*150, cat).setScale(0.1).setOrigin(0,0);
+
+        }
+}
+```
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
