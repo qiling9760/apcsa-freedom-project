@@ -41,14 +41,16 @@ class Scene1 extends Phaser.Scene {
 
         // make grid
         var candy = ["roachCat", "catFood"];
-        for (var row = 0; row < 5; row++) {
-            for (var col = 0; col < 5; col++) {
+        var eachCat = [];
+        for (var row = 0; row < 10; row++) {
+            for (var col = 0; col < 10; col++) {
                 var num = Math.floor(Math.random() * 2);
                 var cat = candy[num];
-                this.add.image(col*150, row*150, cat).setScale(0.1).setOrigin(0,0);
+                eachCat.push(this.add.image(row*100, col*100, cat).setScale(0.1).setOrigin(0,0));
 
             }
         }
+        console.log(eachCat);
 
 
     }
@@ -95,8 +97,8 @@ class Scene1 extends Phaser.Scene {
 
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 2000,
+    height: 1000,
     physics: {
         default: 'arcade'
     },
