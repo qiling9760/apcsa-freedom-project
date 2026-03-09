@@ -29,6 +29,7 @@ dragend(dragged) {
 }
 ```
 
+From the [Phaser documentation](https://docs.phaser.io/api-documentation/namespace/physics-matter-components-transform#setposition), I learned a better way to change the positions of my sprites.  
 `setPosition(x,y)` - set the position of the sprite.
 
 ``` js
