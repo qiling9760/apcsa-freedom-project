@@ -353,6 +353,10 @@ I need to make all my sprites draggable. So I need to use `this.` instead of `va
 ```
 There is a bug. I can only drag the first sprite that I clicked. When I click on other sprites, the first sprite will move to where I clicked. 
 
+### 3/23/26
+Nancy found [this website](https://phaser.io/examples/v3.85.0/input/dragging/view/enable-for-drag) for me and I used this code on the website but it does not work. 
+`cat.on('drag', (pointer, dragX, dragY) => cat.setPosition(dragX, dragY));`
+
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
