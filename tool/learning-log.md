@@ -355,8 +355,30 @@ There is a bug. I can only drag the first sprite that I clicked. When I click on
 
 ### 3/23/26
 Nancy found [this website](https://phaser.io/examples/v3.85.0/input/dragging/view/enable-for-drag) for me and I used this code on the website but it does not work. 
-`cat.on('drag', (pointer, dragX, dragY) => cat.setPosition(dragX, dragY));`
+`cat.on('drag', (pointer, dragX, dragY) => cat.setPosition(dragX, dragY)); `
 
+### 3/29/26
+I searched up, `Phaser drag examples` online, and I found [this website](https://phaser.io/examples/v3.85.0/input/dragging/view/drag-time-threshold). I copied this code to replace my `drag function`. 
+
+``` js
+this.input.on('drag', (pointer, gameObject, dragX, dragY) =>
+        {
+
+            gameObject.x = dragX;
+            gameObject.y = dragY;
+
+        });
+
+        this.input.on('dragend', (pointer, gameObject) =>
+        {
+
+            gameObject.clearTint();
+
+        });
+```
+The `gameObject` in the function means the sprite that I am clicking/dragging on. I replaced the `gameObject.clearTint();` with `this.dragging(gameObject);`. This means the `dragging` function is working on the sprite that I am clicking. 
+
+There is another bug. I need to click on the sprite twice to drag it. The first click and drag does not work. 
 <!--
 * Links you used today (websites, videos, etc)
 * Things you tried, progress you made, etc
