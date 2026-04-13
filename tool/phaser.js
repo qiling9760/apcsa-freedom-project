@@ -156,7 +156,7 @@ class Scene1 extends Phaser.Scene {
   isNeighbor(c1, c2) { // c1 is cat that we are dragging, c2 is the targetCat
     let xDiff = Math.abs(c1.row - c2.row); // (0,0) & (1,0) xDiff = 1
     let yDiff = Math.abs(c1.col - c2.col); // yDiff = 0
-    return rowDiff + colDiff === 1; // return true is they are next to each other
+    return xDiff + yDiff === 1; // return true is they are next to each other
   }
 
   // get the cat info
