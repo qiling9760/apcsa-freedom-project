@@ -120,7 +120,7 @@ dragging(mao) {
 ```
 
 ### EDP
-I am in the `test and evaluate the prototype` stage of my project because I have completed my MVP, and I need to verify that it works as expected. I also need to add extra features to make my game to make if feel like an actual `macth-3 puzzle game`. 
+I am in the `test and evaluate the prototype` stage of my project because I have completed my MVP, and I need to verify that it works as expected. I also need to add extra features to make my game to make it feel like an actual `macth-3 puzzle game`. 
 
 ### Skills
 #### Collaboration
