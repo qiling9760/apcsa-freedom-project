@@ -44,7 +44,7 @@ findMatches() {
     }
 
     // unique will have all the cats that are the same
-    // duplicate from two matches will only get into unique onces
+    // duplicate from two streak will only get into unique onces
     let unique = [];
     for (let i = 0; i<matches.length; i++) {
       if (!unique.includes(matches[i])) { // include checks if the array has that item
@@ -58,7 +58,7 @@ The `for loop` compares current cat with the last cat in the `streak` array. If 
 
 If `streak`'s length is less than 3, that means we did not find a match. It will reset and use the cat that ends the streak as the base to find the next match. 
 
-Since matches are checked both horizontally and vertically, a single cat can belong to two different match streaks at the same time.
+Since streaks are checked both horizontally and vertically, a single cat can belong to two different match streaks at the same time.
 ```
 a, a, a
 b, `a`, b,
@@ -119,6 +119,20 @@ dragging(mao) {
   }
 ```
 
+### EDP
+I am in the `test and evaluate the prototype` stage of my project because I have completed my MVP, and I need to verify that it works as expected. I also need to add extra features to make my game to make if feel like an actual `macth-3 puzzle game`. 
+
+### Skills
+#### Collaboration
+I asked one of my classmates Shi Jun for help. He taught me how to use `matches.push(...streak)` and `.includes()`. `matches.push(...streak)` means adding each individual item in the `streak` array into `matches`. 
+``` js
+matches.push(streak[0], streak[1], streak[2], ...);
+```
+`.includes()` checks if the array has an specific item. 
+
+
+#### Problem decomposition
+I broke the game into different parts and created separate functions to handle each part. I know that in order to swap the cats, I need to get the position information of the cat I want to swap with, so I made the `getCat()` function. I also know that before two cats can be swapped, they need to be next to each other, so I created the `isNeighbor()` function.
 
 
 [Previous](entry04.md) | [Next](entry06.md)
