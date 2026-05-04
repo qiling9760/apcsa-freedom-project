@@ -141,6 +141,80 @@ class Scene1 extends Phaser.Scene {
     return unique;
   }
 
+  catsFallDown() { // cats fall down if there is an empty spot under it
+    for (let col = 0; col < this.cols; col++) {
+      for (let row = this.rows - 1; row >= 0; row--) {
+
+        // if this spot is empty
+        if (this.eachCat[row][col] == null) {
+
+          // look above for a cat to drop down
+          for (let aboveRow = row - 1; aboveRow >= 0; aboveRow--) {
+            if (this.eachCat[aboveRow][col] != null) { // if the cat above exist
+
+              let cat = this.eachCat[aboveRow][col]; // temporary cat info holder
+
+              // move it down in the grid
+              this.eachCat[row][col] = cat; // current empty spot = the cat above
+              this.eachCat[aboveRow][col] = null; // the cat above became empty
+
+              // update cat info
+              cat.row = row;
+              let newX = this.offsetX + col * this.tileDistance;
+              let newY = this.offsetY + row * this.tileDistance;
+              cat.originalX = newX;
+              cat.originalY = newY;
+              cat.setPosition(newX, newY);
+              break;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  refillCats() {// when the cats fall down, create a cat to replace them
+    for (let col = 0; col < this.cols; col++) {
+      for (let row = 0; row < this.rows; row++) {
+
+        if (this.eachCat[row][col] == null) {
+
+          // create a new random cat
+          let num = Math.floor(Math.random() * this.candy.length);
+
+          let x = this.offsetX + col * this.tileDistance;
+          let y = this.offsetY + row * this.tileDistance;
+
+          let cat = this.add.image(x, y, this.candy[num])
+            .setScale(0.05)
+            .setOrigin(0.5, 0.5)
+            .setInteractive({ draggable: true });
+
+          // set cat info
+          cat.catType = this.candy[num];
+          cat.row = row;
+          cat.col = col;
+          cat.originalX = x;
+          cat.originalY = y;
+
+          // add drag
+          cat.on("drag", (pointer, dragX, dragY) => {
+            cat.x = dragX;
+            cat.y = dragY;
+          });
+
+          cat.on("dragend", () => {
+            this.dragging(cat);
+          });
+
+          this.input.setDraggable(cat);
+
+          // put into grid
+          this.eachCat[row][col] = cat;
+        }
+      }
+    }
+  }
   //swap the cat info of c1 and c2, then update the grid and the position of the cats on screen
   swapCat(c1, c2) {
     // store the cat info of c1 in a temp variable so we can swap the cat info of c1 and c2
@@ -204,6 +278,24 @@ class Scene1 extends Phaser.Scene {
         // delete the cats that are three or more in a row or column
         matches[i].destroy();
       }
+      // let cats fall down after removal, add new cat
+      this.catsFallDown();
+      this.refillCats();
+      this.handleMatches();
+    }
+  }
+
+  resetGrid(){
+    for(let r = 1; r<this.rows; r++){
+      for(let c = 0; c<this.cols; c++){
+        if(this.eachCat[r][c] == null){
+          swapCat(this.eachCat[r][c], this.eachCat[r-1][c]);
+        }
+      }
+    }
+
+    for(let cols = 0; cols<this.cols; cols++){
+
     }
   }
 
@@ -220,6 +312,7 @@ class Scene1 extends Phaser.Scene {
     if (this.isNeighbor(mao, targetCat)) {
       this.swapCat(mao, targetCat);
       this.handleMatches();
+      this.resetGrid();
     } else {
       mao.setPosition(mao.originalX, mao.originalY);
     }
