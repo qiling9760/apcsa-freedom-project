@@ -9,14 +9,14 @@
 
 #### MVP
 
-- [ ] Make a 10*10 grid (deadline: 2/23)
-  - [ ] Make a grid using the same sprite (deadline: 2/18)
-  - [ ] Make a grid using 4 sprites (the position of the sprite is randomly selected) (deadline: 2/23)
+- [y] Make a 10*10 grid (deadline: 2/23)
+  - [y] Make a grid using the same sprite (deadline: 2/18)
+  - [y] Make a grid using 4 sprites (the position of the sprite is randomly selected) (deadline: 2/23)
 
-- [ ] Move sprites and switch positions for the whole grid (deadline: 3/2)
+- [y] Move sprites and switch positions for the whole grid (deadline: 3/2)
 
-- [ ] Cancel when the sprites match 3 (deadline: 3/30) 
-  - [ ] Remove sprites when match 3 (deadline: 3/9)
+- [y] Cancel when the sprites match 3 (deadline: 3/30) 
+  - [y] Remove sprites when match 3 (deadline: 3/9)
   - [ ] Sprites move down to fill the hole, new sprites randomly add in (deadline: 3/23)
   - [ ] Cancel sprites if match 3 again when filling new sprites for the hole (deadline: 3/30) 
 
@@ -31,6 +31,8 @@
 - [ ] Add a cat king under the jelly layer 
   - [ ] Cat king randomly sized and positioned
   - [ ] Cat king is saved when all the jelly on top of it is cleared 
+
+- [ ] Add a winning system. If the player got x amount of points from canceling the sprites, they win.
 
 
 

@@ -1,16 +1,24 @@
 # Presentation Plan
 
 ## Hook
-* 
+* Question - Have you guys ever played the game Candy Crush? My game is like that but with cats and different features 
 
 ## Product
-* 
+* Show my game and explain what the user should do to play the game 
 
 ## Process
-* 
+1. Explain what my game needs for it to work. 
+- A grid of cats, a function to find the cats that are 3 in a row/column, a function to swap the cats' positions, a function to remove the cats that matched 
+2. Show code snippets of a function that finds cats that are in a match
+3. Explain the code along with simple drawings 
+Have an image of the grid of the cats 
+- This line creates an array - Animation: an empty array appears after a click 
+- This line means the current cat - Point to the cat on the grid 
+- This if statement compares the current cat with the cats in the array  
+.... until the last line in the function 
 
 ## Conclusion
-* 
+* Break the project into different parts (different functions), comment the code so when you come back a week later you still understand what the code does 
 
 <!-- EXAMPLE
 
