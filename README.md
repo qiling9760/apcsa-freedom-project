@@ -1,22 +1,29 @@
 # APCSA Freedom Project
-by **X**
+by **Qilin Guo**
 
 ## Context
 I am a student at [HSTAT](https://www.hstat.org/) in the [Software Engineering Program](https://hstatsep.github.io/). The "Freedom Project" for AP Computer Science A is a year-long project all about making anything using technology.
 
-For my project, I chose to independently study **X** in order to help me make **X**.
+For my project, I chose to independently study **Phaser** in order to help me make **a match-3 puzzle game**.
+
+## Content
+My blogs show the process of me learning the tool Phaser. They showed my debugging process and the skills I have learned from coding over the year. 
 
 ## Links
 
-[Product]()
+[Product](https://qiling9760.github.io/apcsa-freedom-project/tool/phaser.html)
 
-[Presentation]()
+[Presentation](https://docs.google.com/presentation/d/1VTlK6O89qkjLvx-MZSBPfKbWOPS2eTP3Vno-coBnRrU/edit)
 
 ## Implications
 ##### PROS
-* 
+* Individual - People can find this game entertaining
+* Jobs - Developers can get inspired by the game and come up with other remixes of puzzle game 
+* Culture - This game can attract investors to invest in puzzle games and help make the genre more popular  
 ##### CONS
-* 
+* Big systems - Schools can block this game if the students are addicted to the game 
+* Relationships - Gaming can reduce in person interaction
+* Individual - Students can get distracted from schoolwork
 
 
 ## Blog
